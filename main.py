@@ -109,7 +109,7 @@ def trade_wins():
     # Calculate trade outcomes
     outcomes = df[df['buy_signal'] | df['sell_signal']].apply(lambda row: evaluate_trade_outcomes(row, df), axis=1)
     result = pd.DataFrame([outcome for sublist in outcomes for outcome in sublist])
-    
+
     return result.to_json(orient='records')
 
 
