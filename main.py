@@ -57,7 +57,7 @@ def home():
     return 'Hello, World!'
 
 
-@app.route('/signals')
+@app.route('/api/signals')
 def trading_signals():
     asset = request.args.get('asset', 'EURUSD')
     interval = int(request.args.get('interval', 86400))
@@ -82,7 +82,7 @@ def trading_signals():
     return signals.to_json(orient='records')
 
 
-@app.route('/wins')
+@app.route('/api/wins')
 def trade_wins():
     asset = request.args.get('asset', 'EURUSD')
     interval = int(request.args.get('interval', 86400))

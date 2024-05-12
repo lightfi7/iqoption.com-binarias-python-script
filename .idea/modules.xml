@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/iqoption.iml" filepath="$PROJECT_DIR$/.idea/iqoption.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/iqoption.com.iml" filepath="$PROJECT_DIR$/.idea/iqoption.com.iml" />
     </modules>
   </component>
 </project>
