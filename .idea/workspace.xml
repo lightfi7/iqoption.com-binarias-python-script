@@ -81,6 +81,7 @@
       <updated>1715506473767</updated>
       <workItem from="1715506474853" duration="1181000" />
       <workItem from="1715524160358" duration="364000" />
+      <workItem from="1715606549613" duration="1095000" />
     </task>
     <servers />
   </component>
@@ -88,6 +89,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/iqoption_com$iqoption_com.coverage" NAME="iqoption.com Coverage Results" MODIFIED="1715506921548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/iqoption_com$iqoption_com.coverage" NAME="iqoption.com Coverage Results" MODIFIED="1715607325888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

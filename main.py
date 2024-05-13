@@ -40,6 +40,7 @@ def parse_trade_outcome(row, direction):
         'volume': row['volume'],
         'min': row['min'],
         'max': row['max'],
+        'asset': row['asset'],
         "win": is_win,
     }
 
@@ -59,13 +60,19 @@ def home():
 
 @app.route('/api/signals')
 def trading_signals():
-    asset = request.args.get('asset', 'EURUSD')
+    assets = request.args.get('assets', ['EURUSD'])
     interval = int(request.args.get('interval', 86400))
     count = int(request.args.get('count', 1000))
     endtime = float(request.args.get('endtime', time.time()))
 
     # Fetch historical data
-    candles = iq_api.get_candles(asset, interval, count, endtime)
+    candles = [
+        {**candle, 'asset': asset}
+        for asset in assets
+        for candle in iq_api.get_candles(asset, interval, count, endtime)
+    ]
+
+    print(candles)
     df = pd.DataFrame(candles)
 
     # Calculate EMAs and their difference's WMA
@@ -84,13 +91,18 @@ def trading_signals():
 
 @app.route('/api/wins')
 def trade_wins():
-    asset = request.args.get('asset', 'EURUSD')
+    assets = request.args.get('assets', ['EURUSD'])
     interval = int(request.args.get('interval', 86400))
     count = int(request.args.get('count', 1000))
     endtime = float(request.args.get('endtime', time.time()))
 
     # Retrieve historical data
-    candles = iq_api.get_candles(asset, interval, count, endtime)
+    candles = [
+        {**candle, 'asset': asset}
+        for asset in assets
+        for candle in iq_api.get_candles(asset, interval, count, endtime)
+    ]
+
     df = pd.DataFrame(candles)
 
     # Calculate EMAs and their difference's WMA
