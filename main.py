@@ -1,11 +1,13 @@
 import json
 import numpy as np
 import pandas as pd
+from flask_cors import CORS
 from iqoptionapi.stable_api import IQ_Option
 import time
 from flask import Flask, request
 
 app = Flask(__name__)
+cors = CORS(app)
 
 # Initialize IQ Option API
 iq_api = IQ_Option('Allan.traderksa@gmail.com', '%$iqualab%')
@@ -32,6 +34,7 @@ def calculate_wma(data, period, column='buffer1'):
 def parse_trade_outcome(row, direction):
     is_win = (row['open'] > row['close']) == direction
     return {
+        "id": row['id'],
         "from": row['from'],
         "to": row['to'],
         'at': row['at'],

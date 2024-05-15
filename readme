@@ -1,1 +1,2 @@
 pip install -U https://github.com/iqoptionapi/iqoptionapi/archive/refs/heads/master.zip
+pip install -U flask_cors
