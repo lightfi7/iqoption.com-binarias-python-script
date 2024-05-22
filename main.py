@@ -63,7 +63,7 @@ def home():
 
 @app.route('/api/signals')
 def trading_signals():
-    assets = request.args.get('assets', ['EURUSD'])
+    assets = json.loads(request.args.get('assets', ['EURUSD']))
     interval = int(request.args.get('interval', 86400))
     count = int(request.args.get('count', 1000))
     endtime = float(request.args.get('endtime', time.time()))
@@ -94,7 +94,7 @@ def trading_signals():
 
 @app.route('/api/wins')
 def trade_wins():
-    assets = request.args.get('assets', ['EURUSD'])
+    assets = json.loads(request.args.get('assets', ['EURUSD']))
     interval = int(request.args.get('interval', 86400))
     count = int(request.args.get('count', 1000))
     endtime = float(request.args.get('endtime', time.time()))
@@ -125,6 +125,11 @@ def trade_wins():
     outcomes = df[df['buy_signal'] | df['sell_signal']].apply(lambda row: evaluate_trade_outcomes(row, df), axis=1)
 
     return outcomes.to_json(orient='records')
+
+
+@app.route('/api/assets')
+def assets():
+    return iq_api.get_all_ACTIVES_OPCODE()
 
 
 if __name__ == '__main__':
